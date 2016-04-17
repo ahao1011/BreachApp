@@ -17,6 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    [self showWaitView:YES];
 }
 
 

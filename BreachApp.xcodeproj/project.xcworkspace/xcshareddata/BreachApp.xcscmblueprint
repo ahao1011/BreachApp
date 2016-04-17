@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2036d82c-8694-7407-4bb4-ce57b7db7bff++505",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "2036d82c-8694-7407-4bb4-ce57b7db7bff++505" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2036d82c-8694-7407-4bb4-ce57b7db7bff++505" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "17EC4AC7-C9B6-4C2C-AD80-088CA423D325",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2036d82c-8694-7407-4bb4-ce57b7db7bff++505" : "Breach\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BreachApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BreachApp.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ahao1011\/BreachApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2036d82c-8694-7407-4bb4-ce57b7db7bff++505"
+    }
+  ]
+}
