@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>CampViewController</string>
+		<key>title</key>
+		<string>训练营</string>
+		<key>icon</key>
+		<string>ic_tabbar_home_gray</string>
+		<key>icon_sel</key>
+		<string>ic_tabbar_home</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>CircleViewController</string>
+		<key>title</key>
+		<string>球友圈</string>
+		<key>icon</key>
+		<string>ic_tabbar_oversea_gray</string>
+		<key>icon_sel</key>
+		<string>ic_tabbar_oversea_red</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>ArenaViewController</string>
+		<key>title</key>
+		<string>竞技场</string>
+		<key>icon</key>
+		<string>ic_c2c_tab_weigou</string>
+		<key>icon_sel</key>
+		<string>ic_c2c_tab_weigou_selected</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>MeViewController</string>
+		<key>title</key>
+		<string>我的</string>
+		<key>icon</key>
+		<string>ic_tabbar_shopping_cart_gray</string>
+		<key>icon_sel</key>
+		<string>ic_tabbar_shopping_cart</string>
+	</dict>
+</array>
+</plist>

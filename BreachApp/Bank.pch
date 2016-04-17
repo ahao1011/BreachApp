@@ -1,0 +1,55 @@
+//
+//  Hd_JSHT.pch
+//  Hd_JSHT
+//
+//  Created by ah on 15/12/7.
+//  Copyright © 2015年 ah. All rights reserved.
+//
+
+#ifndef Hd_JSHT_pch
+#define Hd_JSHT_pch
+
+
+
+
+/************__OBJC__BEGIN************/
+// 里面的所有内容只能用到.m文件中或者.mm
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "AHData.h"
+#import "AHConfig.h"
+#import "AHHeader.h"
+
+
+
+#endif
+/************__OBJC__END************/
+
+
+
+/**
+ *  外面的所有东西,整个项目共享
+ */
+
+// #define Name 10 ********这是一个整个项目都能共享的全局变量的例子
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ pch文件的作用:
+ 1.存放一些全局的宏(整个项目中都用得上的宏)
+ 2.用来包含一些全部的头文件(整个项目中都用得上的头文件)
+ 3.能自动打开或者关闭日志输出功能
+ */
+#endif /* Hd_JSHT_pch */
