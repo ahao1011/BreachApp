@@ -8,8 +8,8 @@
 
 // 图片占button得高度比例
 #define AhTabBarButtonImageRatio 0.6
-#define AhTabBarButtonTitleColor (iOS7?[UIColor blackColor]:[UIColor whiteColor])
-#define AhTabBarButtonTitleSelectedColor [UIColor orangeColor]
+#define AhTabBarButtonTitleColor  AHColor(101, 102, 103)
+#define AhTabBarButtonTitleSelectedColor K_AppColor
 
 #import "AhTabBarButton.h"
 #import "UIImage+Ah.h"
@@ -29,18 +29,19 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = K_TabBarColor;
         // 图标居中
         self.imageView.contentMode = UIViewContentModeCenter;
         // 文字居中
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         //文字字体
-        self.titleLabel.font = [UIFont systemFontOfSize:11];
+        self.titleLabel.font = [UIFont systemFontOfSize:13];
         
         [self setTitleColor:AhTabBarButtonTitleColor forState:UIControlStateNormal];
         [self setTitleColor:AhTabBarButtonTitleSelectedColor forState:UIControlStateSelected];
         
         if (!iOS7) {
-            [self setBackgroundImage:[UIImage imageWithName:@"tabbar_slider"] forState:UIControlStateSelected];
+            [self setBackgroundImage:[UIImage imageNamed:@"tabbar_background"] forState:UIControlStateSelected];
         }
         // 添加提醒数字按钮
         AhBadgeButton *badgeButton = [[AhBadgeButton alloc]init];
@@ -48,8 +49,7 @@
         badgeButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleBottomMargin;
         [self addSubview:badgeButton];
         self.badgeButton = badgeButton;
-        
-        self.badgeButton.hidden = YES;
+        self.badgeButton.hidden = NO;
     }
     return self;
 }

@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AhResult.h"
+#import "AhRequest.h"
+
 
 /**url公共头*/
 //static NSString * const HOST = @"https://mpay.tebill.com:8090/RMobPay/";  // 正式
@@ -14,6 +17,9 @@
 static NSString * const HOST = @"https://mpay.tebill.com:8090/RMobPay/";  // 测试
 /**url公共尾*/
 static NSString * const SUFFIX = @".xml";
+
+
+typedef NSURLSessionTask AhSessionTask;
 
 @interface NetManager : NSObject
 
@@ -30,21 +36,42 @@ static NSString * const SUFFIX = @".xml";
  */
 + (void)setMaxConcurrentOperationCount:(NSInteger)maxCount;
 /**
+ *  设置是否打印调测信息
+ */
++ (void)setDebug:(BOOL)debug;
+/**
  *  @author Ah, 16-04-15 11:04:22
  *
  *  get的异步请求
  */
-+ (void)GET:(NSString *)URLString
- parameters:(id)parameters
-   progress:(void (^)(NSProgress * downloadProgress))Progress
++ (AhSessionTask*)GET:(NSString *)URLString
+ parameters:(AhRequest*)Request
+             progress:(void (^)(int64_t bytesRead,
+                                int64_t totalBytesRead))Progress
     success:(void (^)(id responseObject))success
     failure:(void (^)(NSError *error))failure;
 
 /**post的异步请求*/
-+(void)POST:(NSString *)URLString
- parameters:(id)parameters
-   progress:(void (^)(NSProgress *currentProgress))Progress
++(AhSessionTask*)POST:(NSString *)URLString
+ parameters:(AhRequest*)Request
+             progress:(void (^)(int64_t bytesRead,
+                                int64_t totalBytesRead))Progress
     success:(void (^)(id responseObject))success
-    failure:(void (^)(NSError *error))failure;
+    failure:(void (^)(NSError *error))failure ;
+/**
+ *  下载文件
+ *
+ *  @param URLString  下载路径
+ *  @param SaveToPath 保存路径
+ *  @param Progress   进度描述
+ *  @param success    成功句柄
+ *  @param failure    失败句柄
+ */
++ (AhSessionTask *)downloadWithUrl:(NSString *)URLString
+                        saveToPath:(NSString *)SaveToPath
+                          progress:(void (^)(int64_t bytesRead,
+                                             int64_t totalBytesRead))Progress
+                           success:(void (^)(id responseObject))success
+                           failure:(void (^)(NSError *error))failure;
 
 @end

@@ -30,12 +30,22 @@
     [self setTitle:title forState:UIControlStateHighlighted];
     
 }
-/**设置颜色*/
 - (void)setATitleColor:(UIColor *)titleColor{
     
     [self setTitleColor:titleColor forState:UIControlStateNormal];
     [self setTitleColor:titleColor forState:UIControlStateHighlighted];
-
+    
+}
+- (void)setAImage:(UIImage*)img{
+    
+    [self setImage:img forState:UIControlStateNormal];
+    [self setImage:img forState:UIControlStateHighlighted];
+}
+- (void)setABackImage:(UIImage*)backImg{
+    
+    
+    [self setBackgroundImage:backImg forState:UIControlStateNormal];
+    [self setBackgroundImage:backImg forState:UIControlStateHighlighted];
 }
 
 @end

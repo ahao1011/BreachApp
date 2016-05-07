@@ -15,5 +15,10 @@
  *  返回一张自由拉伸的图片
  */
 + (UIImage *)resizeImageWithName:(NSString *)name;
+/**
+ *  图片旋转
+ */
++ (UIImage *)image:(UIImage *)image rotation:(UIImageOrientation)orientation;
+
 
 @end

@@ -33,7 +33,7 @@
     self = [super initWithFrame:frame];
     if (self) { // 非iOS7下设置tabBar的背景
         if(!iOS7){
-        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"tabbar_background"]];
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tabbar_background"]];
         }
     }
     return self;
@@ -63,14 +63,20 @@
  */
 - (void)buttonClick:(AhTabBarButton*)button{
     // 通知代理
+    
+//    MYLog(@"%zd===%zd",self.selectedBtn.tag,button.tag);
+    
     if ([self.delegate respondsToSelector:@selector(tabBar:didSelectedButtonFrom:to:)]) {
         
-        [self.delegate tabBar:self didSelectedButtonFrom:(int)self.selectedBtn.tag to:(int)button.tag];
+        if ([self.delegate tabBar:self didSelectedButtonFrom:(int)self.selectedBtn.tag to:(int)button.tag]) {
+            
+            self.selectedBtn.selected = NO;
+            button.selected = YES;
+            self.selectedBtn = button;
+        }
     }
     // 设置按钮状态
-    self.selectedBtn.selected = NO;
-    button.selected = YES;
-    self.selectedBtn = button;
+   
     
     
 }
@@ -84,6 +90,7 @@
     CGFloat btnY =0;
     CGFloat btnW =self.frame.size.width/self.subviews.count;
     CGFloat btnH =self.frame.size.height;
+    
     for (int index = 0; index<self.subviews.count; index++) {
         AhTabBarButton *button = self.subviews[index];
         CGFloat btnX= index*btnW;

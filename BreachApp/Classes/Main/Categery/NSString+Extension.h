@@ -132,5 +132,10 @@
  *  @return 快速计算出文本的真实尺寸
  */
 + (CGSize)sizeWithText:(NSString *)text andFont:(UIFont *)font andMaxSize:(CGSize)maxSize;
-
+/**
+ *  检测一个字符串是不是可用(不为nil || NULL || 空)
+ *
+ *  @return YES 表示可用  NO表示不可用
+ */
+- (BOOL)isAvaliable;
 @end

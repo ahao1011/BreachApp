@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AhTabBarButton.h"
 @class AhTabBar;
 @protocol AhTabBarDelegate <NSObject>
 
-- (void)tabBar:(AhTabBar*)tabBar didSelectedButtonFrom:(int)from to:(int)to;
+- (BOOL)tabBar:(AhTabBar*)tabBar didSelectedButtonFrom:(int)from to:(int)to;
 
 @end
 
 @interface AhTabBar : UIView
+
 
 @property (nonatomic,weak) id<AhTabBarDelegate> delegate;
 

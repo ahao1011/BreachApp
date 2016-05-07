@@ -167,4 +167,12 @@
     return [text sizeWithFont:font andMaxSize:maxSize];
 }
 
+- (BOOL)isAvaliable{
+    
+    if (self==nil || self==NULL || self.length==0) {
+        return NO;
+    }
+    return YES;
+}
+
 @end

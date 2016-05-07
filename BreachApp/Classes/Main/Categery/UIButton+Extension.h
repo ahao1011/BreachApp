@@ -18,5 +18,9 @@
 - (void)setATitle:(NSString *)title;
 /** 设置颜色 */
 - (void)setATitleColor:(UIColor *)titleColor;
+/** 设置图片 */
+- (void)setAImage:(UIImage*)img;
+/** 设置背景图片 */
+- (void)setABackImage:(UIImage*)backImg;
 
 @end

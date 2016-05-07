@@ -7,37 +7,68 @@
 //
 
 #import "BaseViewController.h"
+#import "MJRefresh.h"
 
 
 
 
 @interface BaseViewController ()
 
+@property (nonatomic,assign,getter=ShowLeftItem)BOOL isShowLeftItem;  //  默认显示
+
 @end
 
 @implementation BaseViewController{
     
     UIView *EffectView;
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //  scrollView的布局
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = K_BackColor;
     
     
     // 取消Ios7之后UIscrollowView及其子类  在有导航条时 有时会自动下移44点的问题
     
-
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
     {
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
     
     [self setupForDismissKeyboard];
-//    [self creatNoti];
+    [self configDataBase];
+    [self showLeftNavItem:YES];
+    
+//    [self creatNoti];  // 暂时取消
+    
+}
+
+- (void)showLeftNavItem:(BOOL)show{
+    
+    if (show) {
+        self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithIcon:@"LeftDis" sleIcon:@"LeftDis" target:self action:@selector(Doback)];
+    }else{
+        self.navigationItem.leftBarButtonItem = nil;
+    }
+}
+
+- (void)configDataBase{
+    
+}
+
+
+
+- (void)Doback{
+    
+    if (self!=self.navigationController.viewControllers[0]) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     
 }
 
@@ -118,6 +149,12 @@
         
     }];
 }
+#pragma mark- 信息提示类
+
+- (void)showWaitMessage:(NSString*)message{
+    
+     [MBProgressHUD showMessage:message];
+}
 
 - (void)showWaitView:(BOOL)IsShow{
     
@@ -136,6 +173,46 @@
 - (void)showAlertMessage:(NSString *)alertMes{
     
     [AhAlertView alertViewWithTitle:@"提示" message:alertMes];
+}
+#pragma mark- 上拉加载  下拉刷新
+
+- (void)setTableViewHeader:(UITableView*)tableView Action:(void (^)())Action{
+    
+    tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:Action];
+    
+    // 马上进入刷新状态
+    [tableView.mj_header beginRefreshing];
+}
+
+- (void)setTableViewFooter:(UITableView*)tableView Action:(void (^)())Action{
+    
+    tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:Action];
+}
+
+
+- (void)EndFreshTableView:(UITableView*)tableView IsAllData:(BOOL)isAll{
+    
+    if (isAll) {
+        
+        [tableView.mj_footer endRefreshingWithNoMoreData];
+    }else{
+        [tableView.mj_header endRefreshing];
+        [tableView.mj_footer endRefreshing];
+        
+    }
+}
+
+#pragma mark- 导航栏左返回按钮 
+
+
+#pragma mark- 输入框代理
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    if (textField!=nil) {
+        [textField resignFirstResponder];
+    }
+    return YES;
 }
 
 
