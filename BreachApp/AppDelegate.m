@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "AHTabBarViewController.h"
+#import "ViewCtrlLoading.h"
+#import "UmManager.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +21,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[AHTabBarViewController alloc]init];
+    
+    // 友盟
+    [UmManager openDebug:YES];
+    [[UmManager defaultManager]setUmInfo];
+    
+//    [UserInfo DefaultUser].Login = YES;
+    // 入口
+    AHTabBarViewController *tabBarVC  = [[AHTabBarViewController alloc]init];
+    self.window.rootViewController = tabBarVC;
+    [UserInfo DefaultUser].tabBarVcController = (AHTabBarViewController *)self.window.rootViewController;
+    
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -46,5 +58,16 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+/**友盟*/
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    
+    return [UmManager UMOpenUrl:url Completion:^{
+        
+    }];
+}
+
+
 
 @end
