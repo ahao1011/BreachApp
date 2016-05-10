@@ -26,7 +26,7 @@
     [UmManager openDebug:YES];
     [[UmManager defaultManager]setUmInfo];
     
-//    [UserInfo DefaultUser].Login = YES;
+    [UserInfo DefaultUser].Login = YES;  //  关闭登录
     // 入口
     AHTabBarViewController *tabBarVC  = [[AHTabBarViewController alloc]init];
     self.window.rootViewController = tabBarVC;
