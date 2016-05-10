@@ -16,8 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self showLeftNavItem:NO];
     
-    //  这是一个测试
 }
 
 - (void)didReceiveMemoryWarning {
