@@ -96,8 +96,6 @@
 //监控tabBar的改变
 - (BOOL)tabBar:(AhTabBar *)tabBar didSelectedButtonFrom:(int)from to:(int)to{
     
-   
-//    MYLog(@"%zd==%zd",from,to);
     
     if (to==3 && ![UserInfo DefaultUser].Login) {
         
@@ -105,6 +103,7 @@
         ViewCtrlLoading*login = [[ViewCtrlLoading alloc] init];
         UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:login];
         [[UserInfo DefaultUser].tabBarVcController presentViewController:navi animated:YES completion:nil];
+
         return NO;
         
     }else{

@@ -36,7 +36,7 @@ typedef NSURLSessionTask AhSessionTask;
  */
 + (void)setMaxConcurrentOperationCount:(NSInteger)maxCount;
 /**
- *  设置是否打印调测信息
+ *  设置是否打印调测信息  默认为YES
  */
 + (void)setDebug:(BOOL)debug;
 /**
@@ -73,5 +73,27 @@ typedef NSURLSessionTask AhSessionTask;
                                              int64_t totalBytesRead))Progress
                            success:(void (^)(id responseObject))success
                            failure:(void (^)(NSError *error))failure;
+/**
+ *  取消网络请求的3种方法
+ // 取消全部请求
+ [HYBNetworking cancelAllRequest];
+ 
+ // 取消单个请求方法一
+ [HYBNetworking cancelRequestWithURL:path];
+ 
+ // 取消单个请求方法二
+ [task cancel];
+ */
+
+/**
+ *  取消全部请求
+ */
++ (void)cancelAllRequest;
+/**
+ *  取消特定请求
+ *
+ *  @param url url路径
+ */
++ (void)cancelRequestWithURL:(NSString *)url ;
 
 @end

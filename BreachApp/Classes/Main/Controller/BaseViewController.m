@@ -212,8 +212,28 @@
     if (textField!=nil) {
         [textField resignFirstResponder];
     }
+    [self presentViewController:self animated:YES completion:^{
+        
+    }];
     return YES;
 }
+
+#pragma mark- presnet动画
+
+- (void)PresentViewController:(UIViewController *)vc Animated:(BOOL)animated AnimationType:(NSString*)type completion:(void (^)(void))completion{
+    
+    
+    CATransition *animation = [CATransition animation];
+    animation.duration = 1.0;
+//    animation.timingFunction = UIViewAnimationCurveEaseOut;
+    animation.type = @"ceshi ";
+    animation.subtype = kCAGravityLeft;
+    [self.view.window.layer addAnimation:animation forKey:@"ceshi-09"];
+    [self presentViewController:vc animated:NO completion:completion];
+    
+}
+
+
 
 
 

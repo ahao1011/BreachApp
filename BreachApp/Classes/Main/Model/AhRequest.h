@@ -21,3 +21,8 @@
 @interface Bre002 : AhRequest
 
 @end
+
+/**个人资料*/
+@interface Bre003 : AhRequest
+
+@end

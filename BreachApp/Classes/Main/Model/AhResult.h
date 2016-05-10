@@ -46,7 +46,7 @@
  */
 @interface Bre002Res : AhResult
 
-@property (nonatomic,copy)NSMutableArray *list;
+@property (nonatomic,strong)NSMutableArray *list;
 
 @end
 
@@ -59,6 +59,33 @@
 
 @property (nonatomic,copy)NSString *title;
 @property (nonatomic,copy)NSString *imgUrl;
+
+
+@end
+
+/**
+ *  个人资料
+ */
+@interface Bre003Res : AhResult
+
+/**头像*/
+@property (nonatomic,copy)NSString  *ImgUrl;
+/**昵称*/
+@property (nonatomic,copy)NSString *Name;
+/**性别*/
+@property (nonatomic,copy)NSString *Sex;
+/**球龄*/
+@property (nonatomic,copy)NSString *BoardAge;
+/**身高*/
+@property (nonatomic,copy)NSString *Height;
+/**体重*/
+@property (nonatomic,copy)NSString *weight;
+/**位置*/
+@property (nonatomic,copy)NSString *Loca;
+/**所在城市*/
+@property (nonatomic,copy)NSString *City;
+/**大学*/
+@property (nonatomic,copy)NSString *Univer;
 
 
 @end

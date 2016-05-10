@@ -54,4 +54,13 @@
  *  YES 显示导航栏返回按钮  NO 显示
  */
 - (void)showLeftNavItem:(BOOL)show;
+/**
+ *  present自定义动画
+ *
+ *  @param vc         被present的vc
+ *  @param animated   YES 则使用系统默认的presnt动画效果 NO可以自定义
+ *  @param type       自定义动画
+ *  @param completion 回调
+ */
+- (void)PresentViewController:(UIViewController *)vc Animated:(BOOL)animated AnimationType:(NSString*)type completion:(void (^)(void))completion;
 @end

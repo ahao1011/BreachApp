@@ -29,7 +29,7 @@
  */
 static NSDictionary *Ah_httpHeaders = nil;
 /**是否打开调试开关*/
-static BOOL Debug = NO;
+static BOOL Debug = YES;
 /**接受宿友SessionTask的数组*/
 static NSMutableArray *TaskArr;
 
@@ -133,6 +133,9 @@ static NSMutableArray *TaskArr;
     AFHTTPSessionManager *mgr = [self defautManager];
     URLString = [self MakeFullUrl:URLString];
      NSDictionary *parameters = Request.mj_keyValues;
+    if (Debug) {  //  打开打印
+        MJExtensionLog(@" 🈹🈹🈹  🈹🈹🈹  🈹🈹🈹  🈹🈹🈹  🈹🈹🈹 \n 请求模型:%@\n 参数为:\n %@ \n",[NSString stringWithUTF8String:class_getName(Request.class)],parameters);
+    }
     AhSessionTask *task =  [mgr POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
         if (Progress) {
@@ -147,12 +150,19 @@ static NSMutableArray *TaskArr;
             NSString *resultClassName = [self resultFromRequest:Request];
             Class aclass = NSClassFromString(resultClassName);
             AhResult *result = [aclass mj_objectWithKeyValues:dict];
+            if (Debug) {  //  打开打印
+                MJExtensionLog(@" 🈹🈹🈹  🈹🈹🈹  🈹🈹🈹  🈹🈹🈹  🈹🈹🈹 \n 接受模型:%@\n 接受数据为:\n %@ \n",resultClassName,result);
+            }
             success(result);
         }
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         if (failure) {
+            if (Debug) {  //  打开打印
+                MJExtensionLog(@"否❌否❌否❌否❌否❌否❌否❌否❌否❌ \n 数据请求失败 \n: 请求雷明:%@\n 接受数据为:\n %@ \n",[NSString stringWithUTF8String:class_getName(Request.class)],error);
+            }
+
             failure(error);
         }
         [error localizedDescription];
@@ -177,6 +187,9 @@ static NSMutableArray *TaskArr;
     URLString = [self MakeFullUrl:URLString];
     NSURLRequest *downloadRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:URLString]];
     
+    if (Debug) {  //  打开打印
+        MJExtensionLog(@" 🈹🈹🈹  🈹🈹🈹  🈹🈹🈹  🈹🈹🈹  🈹🈹🈹 \n 下载地址:%@\n 保存路径为:\n %@ \n",URLString,SaveToPath);
+    }
     AhSessionTask *task = [mgr downloadTaskWithRequest:downloadRequest progress:^(NSProgress * _Nonnull downloadProgress) {
         
         if (Progress) {
@@ -196,7 +209,6 @@ static NSMutableArray *TaskArr;
             }
             
             if (Debug) {
-                
                 MYLog(@"下载成功 路径 %@",
                           [self absoluteUrlWithPath:URLString]);
             }
@@ -318,6 +330,39 @@ static NSMutableArray *TaskArr;
     return absoluteUrl;
 }
 
+
+#pragma mark- 取消全部网络请求
+
++ (void)cancelAllRequest {
+    @synchronized(self) {
+        [[self allTasks] enumerateObjectsUsingBlock:^(AhSessionTask * _Nonnull task, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([task isKindOfClass:[AhSessionTask class]]) {
+                [task cancel];
+            }
+        }];
+        
+        [[self allTasks] removeAllObjects];
+    };
+}
+
+#pragma mark- 取消耽搁Url的网络请求
+
++ (void)cancelRequestWithURL:(NSString *)url {
+    if (url == nil) {
+        return;
+    }
+    
+    @synchronized(self) {
+        [[self allTasks] enumerateObjectsUsingBlock:^(AhSessionTask * _Nonnull task, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([task isKindOfClass:[AhSessionTask class]]
+                && [task.currentRequest.URL.absoluteString hasSuffix:url]) {
+                [task cancel];
+                [[self allTasks] removeObject:task];
+                return;
+            }
+        }];
+    };
+}
 
 
 
