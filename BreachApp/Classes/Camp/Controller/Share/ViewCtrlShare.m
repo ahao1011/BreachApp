@@ -100,7 +100,7 @@
     }
     
     
-    [[UmManager defaultManager]ShareSNSToTypes:@[nameStr] withtitle:self.model.title titleMessage:@"呼朋唤友快来玩" img:[UIImage imageNamed:@"ic_share_weibo"] location:nil urlResource:nil presentedController:self completion:^(NSString *responseName, BOOL isShareSuccess) {
+    [[UmManager defaultManager]ShareSNSToTypes:@[nameStr] withtitle:self.model.title titleMessage:@"王向垒个二货" img:[UIImage imageNamed:@"ic_share_weibo"] location:nil urlResource:nil presentedController:self completion:^(NSString *responseName, BOOL isShareSuccess) {
         
         if (isShareSuccess) {
             
