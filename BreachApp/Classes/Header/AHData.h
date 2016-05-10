@@ -21,59 +21,18 @@ static NSString *const jsj= @"hahha";
 
 //  颜色
 
-/**导航条标题*/     
-#define kColorNavBlack [UIColor colorWithHexString:@"#333333"]
-/**自定义cell的标题*/
-#define kColorDarkGray [UIColor colorWithHexString:@"#666666"]
-/**自定义cell的副标题 或UILabel上字体颜色*/
-#define kColorLightGray [UIColor colorWithHexString:@"#999999"]
-/**列表二级cell的背景颜色*/
-#define kColorLightGrayBg [UIColor colorWithHexString:@"#F9F9F9"]
-/**整个工程主题蓝色 或底部左按钮蓝色*/
-#define kColorThemeBlueBg [UIColor colorWithHexString:@"#33A1F4"]
-/**底部左按钮选中蓝色*/
-#define kColorLBtnSelectBlueBg [UIColor colorWithHexString:@"#228FE1"]
-/**底部右按钮未选中蓝色*/
-#define kColorRBtnBlueBg [UIColor colorWithHexString:@"#74BFF7"]
-/**底部右按钮选中蓝色*/
-#define kColorRBtnSelectBlueBg [UIColor colorWithHexString:@"#67ADE2"]
-/**底部按钮置灰*/
-#define kColorBottomBtnGaryBg [UIColor colorWithHexString:@"#D4D4D4"]
-/**错误输入提示字体颜色*/
-#define kColorErrorTipText [UIColor colorWithHexString:@"#E91B00"]
-/**错误输入提示背景颜色*/
-#define kColorErrorTipBg [UIColor colorWithHexString:@"#FCEDCF"]
-/**关于金钱的字体颜色*/
-#define kColorMoney [UIColor colorWithHexString:@"#EE4635"]
-/**TabBar选中颜色*/
-#define kColorTabBarSelect [UIColor colorWithHexString:@"#4080D0"]
-/**TabBar未选中颜色*/
-#define kColorTabBarUnSelect [UIColor colorWithHexString:@"#8F9CAC"]
+/**主色调(导航栏 按钮)*/
+#define K_AppColor  AHColor(114, 119, 165)
+/**tabBar背景色*/
+#define K_TabBarColor  AHColor(31, 32, 33)
+/**线条颜色*/
+#define K_LineColor  AHColor(220, 220, 220)
+/**界面背景色*/
+#define K_BackColor  AHColor(237, 238, 239)
+/**红色*/
+#define K_RedColor  AHColor(227, 63, 62)
 
-/**立即投资蓝色*/
-#define kColorInvestBlueBg [HYColor colorWithStringHex:@"#39A3F2"]
 
-typedef enum {
-    UITypeUploadPhotoResetTradePassword,
-    UITypeUploadPhotoChangeMobileUnUseing,
-    UITypeUploadPhotoResetLoginPassword
-}UITypeUploadPhoto;//上传照片类型
-
-typedef enum{
-    UIBankCardTypeUnionPay,
-    UIBankCardTypeTranfer,
-    UIBankCardTypeHBBank
-}UIChangeBankCardType;//选择银行卡的认证类型
-
-typedef enum {  //  银行卡类型
-    /** 默认卡  */
-    BankTypeDefault,
-    /** 主卡 */
-    BankTypeMainCard,
-    /** 副卡 */
-    BankTypeSecCard
-    
-}BankType;
 
 typedef enum {  //  产品类型
     /** 默认产品  */

@@ -19,6 +19,23 @@
 #import "MBProgressHUD+MJ.h"
 #import "NetManager.h"
 #import "AhAlertView.h"
+#import "MJExtension.h"
+#import "NSString+Extension.h"
+#import "NSString+MJExtension.h"
+#import "UIColor+Hex.h"
+#import "UIColor+Extension.h"
+#import "Ahbutton.h"
+#import "UIBarButtonItem+Ah.h"
+#import "AHNavigationController.h"
+#import "AhRequest.h"
+#import "AhResult.h"
+#import "BraschTool.h"
+#import "Ahbutton.h"
+#import "NumberVerification.h"
+#import "UIButton+Extension.h"
+//#import "UITextField+Extion.h"
+#import "TimerButton.h"
+
 
 
 
@@ -34,15 +51,15 @@
 //3. 随机色
 #define AHRandomColor AHColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 //4. 屏幕宽 高
-#define K_Screen_Width [UIScreen mainScreen].bounds.size.width
-#define K_Screen_Height [UIScreen mainScreen].bounds.size.height
+#define K_ScreenWidth [UIScreen mainScreen].bounds.size.width
+#define K_ScreenHeight iOS7 ? [UIScreen mainScreen].bounds.size.height :[UIScreen mainScreen].bounds.size.height-20
 
 //5. 设备简单判断
 
-#define Iphone4 ((K_Screen_Width == 320) && (K_Screen_Height == 480))
-#define Iphone5 ((K_Screen_Width == 320) && (K_Screen_Height == 568))
-#define Iphone6 ((K_Screen_Width == 375) && (K_Screen_Height == 667))
-#define Iphone6P ((K_Screen_Width == 414) && (K_Screen_Height == 736))
+#define Iphone4 ((K_ScreenWidth == 320) && (K_ScreenHeight == 480))
+#define Iphone5 ((K_ScreenWidth == 320) && (K_ScreenHeight == 568))
+#define Iphone6 ((K_ScreenWidth == 375) && (K_ScreenHeight == 667))
+#define Iphone6P ((K_ScreenWidth == 414) && (K_ScreenHeight == 736))
 
 //6. 字体
 #define AhFont(x)  [UIFont systemFontOfSize:x]
@@ -54,6 +71,9 @@
 #define AhKeyWindow [UIApplication sharedApplication].keyWindow
 // 10 偏好设置  持久化
 #define AhUserDefault [NSUserDefaults standardUserDefaults]
+//  tabbarVC
+
+#define BreachTabBarViewController (AHTabBarViewController*)self.window.rootViewController
 
 
 
